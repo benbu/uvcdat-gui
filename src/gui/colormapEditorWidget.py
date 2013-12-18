@@ -4,7 +4,7 @@ import os
 import uvcdatCommons
 import core
 import vistrails.core.db
-from packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
+from vistrails.packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
 from vistrails.core.modules.module_registry import get_module_registry
 import api
 

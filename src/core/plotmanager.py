@@ -131,9 +131,9 @@ class PlotManager(QtCore.QObject):
                     traceback.print_exc()
                                 
     def load_vcs_plots(self):
-        from packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
+        from vistrails.packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
         from gui.uvcdat.uvcdatCommons import plotTypes, gmInfos
-        from packages.uvcdat_cdms.init import get_canvas
+        from vistrails.packages.uvcdat_cdms.init import get_canvas
         if not self._registry:
             raise UVCDATInternalError("Plot Registry must have been initialized")
         

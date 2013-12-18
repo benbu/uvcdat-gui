@@ -3,10 +3,10 @@ from PyQt4 import QtCore, QtGui
 
 from project_controller import ProjectController
 from theme import UVCDATTheme
-from packages.spreadsheet.spreadsheet_controller import spreadsheetController
+from vistrails.packages.spreadsheet.spreadsheet_controller import spreadsheetController
 from core.vistrail.action_annotation import ActionAnnotation
 from core.thumbnails import ThumbnailCache
-from packages.spreadsheet.spreadsheet_tab import StandardWidgetSheetTab
+from vistrails.packages.spreadsheet.spreadsheet_tab import StandardWidgetSheetTab
 import customizeUVCDAT, traceback
 
 def toAnnotation(sheet, x, y, w=None, h=None):
@@ -506,8 +506,8 @@ class Workspace(QtGui.QDockWidget):
                 
                 # add any variables that weren't automatically added above
                 # by checking leaf nodes of the version tree
-                from packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
-                from packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
+                from vistrails.packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
+                from vistrails.packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
                 fullTree = view.controller.vistrail.tree.getVersionTree()
                 pipelinesToSearch = []
                 for version in fullTree.iter_vertices():

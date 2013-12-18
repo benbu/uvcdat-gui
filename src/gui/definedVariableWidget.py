@@ -85,7 +85,7 @@ class QDefinedVariableWidget(QtGui.QWidget):
         self.selectingAll = False
         
     def myPressed(self, item):
-        from packages.vtDV3D import ModuleStore
+        from vistrails.packages.vtDV3D import ModuleStore
         if item.isSelected():
             self.selectVariableFromListEvent(item)
             self.waitingForClick = False
@@ -230,7 +230,7 @@ class QDefinedVariableWidget(QtGui.QWidget):
         if var is None:
             return
 
-        from packages.vtDV3D import ModuleStore
+        from vistrails.packages.vtDV3D import ModuleStore
 
         cdmsVar = None
         replaced = False
@@ -264,8 +264,8 @@ class QDefinedVariableWidget(QtGui.QWidget):
     def deleteVariable(self, varid):
         """ Remove variable from dict and project
         """
-        from packages.vtDV3D import ModuleStore
-        from packages.vtDV3D.vtUtilities import memoryLogger
+        from vistrails.packages.vtDV3D import ModuleStore
+        from vistrails.packages.vtDV3D.vtUtilities import memoryLogger
         memoryLogger.log("start QDefinedVariableWidget.deleteVariable")
         for i in range(self.varList.count()-1,-1,-1):
             if self.varList.item(i).getVarName() == varid:
@@ -459,7 +459,7 @@ class QDefinedVariableWidget(QtGui.QWidget):
             self.deleteVariable(v.id)
 
     def newVariable(self):
-        from packages.vtDV3D.vtUtilities import memoryLogger
+        from vistrails.packages.vtDV3D.vtUtilities import memoryLogger
         memoryLogger.log("start QDefinedVariableWidget.newVariable")
         varProp = self.root.varProp
         varProp.label.setText("Load From")

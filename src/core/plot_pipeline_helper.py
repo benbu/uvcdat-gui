@@ -87,7 +87,7 @@ class PlotPipelineHelper(object):
     @staticmethod
     def build_plot_pipeline_action(controller, version, var_modules,  plot_objs, 
                                    row, col):
-        from packages.uvcdat_cdms.init import CDMSVariableOperation 
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariableOperation 
         #for now, this helper will generate change parameter actions based on the
         #alias dictionary
         #first set the plot:
@@ -260,7 +260,7 @@ class PlotPipelineHelper(object):
         returns (module_list, connection_list), [(module, portSpec)]
         """
         
-        from packages.spreadsheet.basic_widgets import SpreadsheetCell  
+        from vistrails.packages.spreadsheet.basic_widgets import SpreadsheetCell  
         
         #keep a map between new and old modules so we can make sure
         #our new connections connect the correct modules

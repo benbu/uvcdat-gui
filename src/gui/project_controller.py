@@ -50,8 +50,8 @@ from core.plotmanager import get_plot_manager
 from core.plot_pipeline_helper import PlotPipelineHelper
 from vistrails.core.vistrail.controller import VistrailController
 from vistrails.core.configuration import get_vistrails_configuration
-from packages.spreadsheet.spreadsheet_controller import spreadsheetController
-from packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
+from vistrails.packages.spreadsheet.spreadsheet_controller import spreadsheetController
+from vistrails.packages.uvcdat_cdms.pipeline_helper import CDMSPipelineHelper
 from project_controller_cell import ControllerCell
 from application import get_vistrails_application
 
@@ -235,7 +235,7 @@ class ProjectController(QtCore.QObject):
         return (result, cvars)
     
     def _get_or_create_computed_opvar(self, varname):
-        from packages.uvcdat_cdms.init import CDMSVariable
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable
         if not varname in self.computed_variables_ops:
             self.computed_variables_ops[varname] = CDMSVariable(name=varname)
         return self.computed_variables_ops[varname]
@@ -318,7 +318,7 @@ class ProjectController(QtCore.QObject):
             print "Warning: more than 2 variables in calculator command"
         
     def process_typed_calculator_command(self, varname, command):
-        from packages.uvcdat_cdms.init import CDMSVariableOperation 
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariableOperation 
         
         
         defnames = self.defined_variables.keys()
@@ -336,7 +336,7 @@ class ProjectController(QtCore.QObject):
         
     def copy_computed_variable(self, oldname, newname, axes=None, 
                                axesOperations=None):
-        from packages.uvcdat_cdms.init import CDMSVariable
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable
         if oldname in self.computed_variables:
             (vars, txt, st, varname) = self.computed_variables[oldname]
             self.computed_variables[newname] = (vars, txt, st, newname)
@@ -359,7 +359,7 @@ class ProjectController(QtCore.QObject):
                 
     def emit_defined_variable(self, var):
         import cdms2
-        from packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
         _app = get_vistrails_application()
         if isinstance(var, CDMSVariable):
             varObj = self.create_exec_new_variable_pipeline(var.name)
@@ -607,8 +607,8 @@ class ProjectController(QtCore.QObject):
                   plot_type, cell.current_parent_version)
         
     def search_and_emit_variables(self, pipeline, helper, cell=None):
-        from packages.uvcdat.init import Variable
-        from packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
+        from vistrails.packages.uvcdat.init import Variable
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
         var_modules = helper.find_modules_by_type(pipeline, 
                                                   [Variable])
         if len(var_modules) > 0:
@@ -678,7 +678,7 @@ class ProjectController(QtCore.QObject):
 #            if var not in self.defined_variables:
 #                not_found = True
         if not_found:
-            from packages.uvcdat_cdms.init import CDMSVariable
+            from vistrails.packages.uvcdat_cdms.init import CDMSVariable
             helper = self.plot_manager.get_plot_helper(cell.plots[0].package)
             pipeline = self.vt_controller.vistrail.getPipeline(cell.current_parent_version)
             
@@ -690,7 +690,7 @@ class ProjectController(QtCore.QObject):
                 #construct the variables based on the alias values (Emanuele)
 #                if cell.plots[0].package == "PVClimate":
                     #TODO: needs to be updated now that paraview package uses cdms vars
-#                    from packages.pvclimate.pvvariable import PVVariable
+#                    from vistrails.packages.pvclimate.pvvariable import PVVariable
 #                    for i in range(len(cell.plots[0].vars)):
 #                        filename = pipeline.get_alias_str_value(cell.plots[0].files[i])
 #                        varname = pipeline.get_alias_str_value(cell.plots[0].vars[i])
@@ -797,7 +797,7 @@ class ProjectController(QtCore.QObject):
         _app.notify('execution_updated')
             
     def execute_plot_pipeline(self, pipeline, cell):
-        from packages.spreadsheet.spreadsheet_execute import executePipelineWithProgress
+        from vistrails.packages.spreadsheet.spreadsheet_execute import executePipelineWithProgress
         executePipelineWithProgress(pipeline, 'Execute Cell',
                                     locator=self.vt_controller.locator,
                                     current_version=cell.current_parent_version,
@@ -1178,7 +1178,7 @@ class ProjectController(QtCore.QObject):
         
         #import pdb; pdb.set_trace()
         
-        from packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable, CDMSVariableOperation
         modules = workflow_result.objects
 
         for id, module in modules.iteritems():

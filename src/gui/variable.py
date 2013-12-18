@@ -19,7 +19,7 @@ import customizeUVCDAT
 import editVariableWidget
 from gui.common_widgets import QDockPushButton
 from gui.application import get_vistrails_application
-from packages.uvcdat_cdms.init import CDMSVariable
+from vistrails.packages.uvcdat_cdms.init import CDMSVariable
 from gui.uvcdat.cdmsCache import CdmsCache
 
 class QBookMarksListWidget(uvcdatCommons.QDragListWidget):
@@ -290,7 +290,7 @@ class VariableProperties(QtGui.QDialog):
         self.originTabWidget.addTab(esgf,"ESGF")
 
     def createOpenDAPTab(self):
-        from packages.vtDV3D.RemoteDataBrowser import RemoteDataBrowser
+        from vistrails.packages.vtDV3D.RemoteDataBrowser import RemoteDataBrowser
         browser = RemoteDataBrowser()
         self.connect( browser, RemoteDataBrowser.new_data_element, self.processDataAddress )
         self.originTabWidget.addTab(browser,"OpenDAP")
@@ -328,7 +328,7 @@ class VariableProperties(QtGui.QDialog):
         self.updateAxesFromRoi()
 
     def updateAxesFromRoi(self):
-        from packages.vtDV3D.CDMS_VariableReaders import getAxisType, AxisType
+        from vistrails.packages.vtDV3D.CDMS_VariableReaders import getAxisType, AxisType
         #print "Selected roi: %s " % str( self.roi )
         # Add code here to update Lat Lon sliders.
         n = self.axisListHolder.gridLayout.rowCount()
@@ -561,7 +561,7 @@ class VariableProperties(QtGui.QDialog):
 
 
     def updateVarInfo(self, axisList):
-        from packages.vtDV3D.CDMS_VariableReaders import getAxisType, AxisType
+        from vistrails.packages.vtDV3D.CDMS_VariableReaders import getAxisType, AxisType
         
         """ Update the text box with the variable's information """
         if axisList is None:

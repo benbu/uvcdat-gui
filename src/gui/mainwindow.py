@@ -32,7 +32,7 @@ from dockcalculator import DockCalculator
 import animationWidget
 from cdmsCache import CdmsCacheWidget
 
-from packages.spreadsheet.spreadsheet_controller import spreadsheetController
+from vistrails.packages.spreadsheet.spreadsheet_controller import spreadsheetController
 import uvcdat_rc
 
 import customizeUVCDAT
@@ -354,7 +354,7 @@ class UVCDATMainWindow(QtGui.QMainWindow):
 #                    # that. For now I will talk to the main window directly.
 #        
 #                    from api import get_current_project_controller
-#                    from packages.uvcdat_cdms.init import CDMSVariable
+#                    from vistrails.packages.uvcdat_cdms.init import CDMSVariable
 #                    controller = get_current_project_controller()
 #                    if controller.get_defined_variable(k) is None:
 #                        cdmsVar = CDMSVariable(filename=None, name=k)

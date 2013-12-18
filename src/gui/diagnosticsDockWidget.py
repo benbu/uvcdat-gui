@@ -269,7 +269,7 @@ class DiagnosticsDockWidget(QtGui.QDockWidget, Ui_DiagnosticDockWidget):
         row = 0
         col = 0
         import cdms2
-        from packages.uvcdat_cdms.init import CDMSVariable
+        from vistrails.packages.uvcdat_cdms.init import CDMSVariable
         projectController = self.parent().get_current_project_controller()
         #Clear the cell
         projectController.clear_cell(sheet,col,row)

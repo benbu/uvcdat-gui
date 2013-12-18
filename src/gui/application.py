@@ -192,7 +192,7 @@ parameters from other instances")
         except Exception:
             pass
         
-        from packages.VisIt.info import package_requirements as visit_requirements
+        from vistrails.packages.VisIt.info import package_requirements as visit_requirements
         try:
             visit_requirements()
             pkgs.append('VisIt')

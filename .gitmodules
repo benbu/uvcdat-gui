@@ -1,0 +1,3 @@
+[submodule "lib/vistrails"]
+	path = lib/vistrails
+	url = https://github.com/VisTrails/VisTrails.git
